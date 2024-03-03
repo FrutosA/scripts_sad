@@ -72,7 +72,8 @@ iptables -t nat -A PREROUTING -p tcp --dport 2022 -j DNAT --to 172.2.2.100:22
 iptables -A FORWARD -i eth0 -d 172.2.2.100 -p tcp --dport 22 -j ACCEPT
 iptables -A FORWARD -i eth1 -d 172.2.2.100 -p tcp --dport 22 -j ACCEPT
 
+# Redirigimos el trafico al puerto 80
 iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to 172.2.1.2:80
 
-#Permitimos tracico con el puerto 80 al servidor
+#Permitimos trafico con el puerto 80 al servidor
 iptables -A FORWARD -i eth0 -d 172.2.1.2 -p tcp --dport 80 -j ACCEPT
