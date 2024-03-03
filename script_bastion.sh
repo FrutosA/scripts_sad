@@ -102,11 +102,6 @@ iptables -A FORWARD -i enp0s8 -o enp0s9 -p icmp -j ACCEPT
 iptables -A FORWARD -i enp0s9 -o enp0s8 -p icmp -j ACCEPT
 
 
-#12. Permitir consultas DNS a la red interna
-iptables -A FORWARD -i enp0s9 -o enp0s3 -p icmp -j ACCEPT
-iptables -A FORWARD -i enp0s3 -o enp0s9 -p icmp -j ACCEPT
-
-
 #14. Permitir todo el trafico TCP  saliente de la red interna hacia afuera
 iptables -A FORWARD -i enp0s9 -o enp0s3 -p tcp -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i enp0s3 -o enp0s9 -p tcp -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
